@@ -1,4 +1,5 @@
 import routes from "./js/routes";
+import { playVideo } from "./js/tools";
 
 
 const callRoute = () => {
@@ -16,3 +17,4 @@ const callRoute = () => {
 
 window.addEventListener('hashchange', () => callRoute());
 window.addEventListener('DOMContentLoaded', () => callRoute());
+

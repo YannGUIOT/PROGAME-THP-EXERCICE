@@ -1,6 +1,5 @@
 import PageList from "./PageList";
 
-
 const searchGame = () => {
   let search = document.getElementById("findgame").value;
   if (search == "") {
@@ -11,26 +10,21 @@ const searchGame = () => {
   }
 };
 
-// const allLogos = (platform)=>{
-//   let list = [];
-//   platform.forEach(platform => {
-//     if(platform.platform.slug =='pc'){
-//       list.push(`<a name='pc' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/pc.svg'></a>`)
-//     }else if (platform.platform.slug =='playstation'){
-//       list.push(`<a name='playstation' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/playstation.svg'></a>`)
-//     }else if (platform.platform.slug =='xbox'){
-//       list.push(`<a name='xbox' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/xbox.svg'></a>`)
-//     }else if (platform.platform.slug =='ios'){
-//       list.push(`<a name='mobile' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/mobile.svg'></a>`)
-//     }else if (platform.platform.slug =='mac'){
-//       list.push(`<a name='mac' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/mac.svg'></a>`)
-//     }else if (platform.platform.slug =='linux'){
-//       list.push(`<a name='linux' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/linux.svg'></a>`)
-//     }else if (platform.platform.slug =='nintendo'){
-//       list.push(`<a name='nintendo' href='#pagelist/&parent_platforms=${platform.platform.id}'><img class='logo-platform' src='./src/img/switch.svg'></a>`)
-//     }
-//   })
-//   return list.join(' ');
-// };
+const playVideo = (id) => {
+  fetch(`https://api.rawg.io/api/games/${id}/movies?key=${API_KEY}`)
+    .then((response) => response.json())
+    .then((responseData) => {
+      if (responseData.count > 0) {
+        document.getElementById("video").innerHTML = `
+          <h2>TRAILER</h2>
+          <video controls style="width:100%">
+              <source src="${responseData.results[0].data.max}" type="video/mp4">
+          </video>`;
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    }); 
+}
 
-export { searchGame };
+export {searchGame , playVideo};

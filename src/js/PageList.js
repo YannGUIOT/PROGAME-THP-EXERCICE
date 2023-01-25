@@ -1,4 +1,4 @@
-import searchGame from "./tools";
+import {searchGame} from "./tools"
 import icons from "./icons";
 import "@fortawesome/fontawesome-free/js/all.js";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -17,7 +17,6 @@ const PageList = (argument = '') => {
         let platformsHTML = "";
         let genresHTML = "";
         article.parent_platforms.forEach(element => {
-        // platformsHTML += `<div class="platform"> &nbsp; ${element.platform.name} &nbsp; </div>`
         platformsHTML += `<p class="logo-platform-pageList"> ${icons[element.platform.id]} </p>`;
         });
         article.genres.forEach(element => {
@@ -42,7 +41,6 @@ const PageList = (argument = '') => {
             </div>
           </div>
           <div class="dateBanner"> 
-            <div class="empty"></div>
             <div class="date">${article.released.substring(0, 4)} 
               &nbsp; &nbsp; <span class="moreInfo"> More Informations </span>
             </div> 

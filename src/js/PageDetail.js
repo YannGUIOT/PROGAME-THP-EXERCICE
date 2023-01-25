@@ -1,4 +1,5 @@
 import icons from "./icons";
+import { playVideo } from "./tools";
 
 const PageDetail = (argument) => {
   const preparePage = () => {
@@ -9,16 +10,14 @@ const PageDetail = (argument) => {
       console.log(gameData);
       let developersHTML = "";
       let tagsHTML = "";
-      let platformsHTML = "";
       let svgLogos = "";
       let genresHTML = "";
+      let storesHTML = "";
       gameData.developers.forEach(element => {developersHTML += `${element.name} &nbsp; `});
-      gameData.tags.forEach(element => {tagsHTML += `# ${element.name} &nbsp; `});
-      gameData.parent_platforms.forEach(element => {
-        platformsHTML += `<div class="article-platform"> &nbsp; ${element.platform.name} &nbsp; </div>`;
-        svgLogos += `<div class="logo-platform">${icons[element.platform.id]}</div>`;
-      });
-      gameData.genres.forEach(element => {genresHTML += `<div class="article-genre"> &nbsp; ${element.name} &nbsp; </div>`});
+      gameData.tags.forEach(element => {tagsHTML += `<div class="tag">&nbsp;# ${element.name}&nbsp;</div>`});
+      gameData.parent_platforms.forEach(element => {svgLogos += `<div class="logo-platform"><div class="logo-svg">${icons[element.platform.id]}</div><div class="logo-text">${element.platform.name}</div></div>`;});
+      gameData.genres.forEach(element => {genresHTML += `<div class="article-genre">&nbsp; ${element.name}&nbsp;&nbsp;</div>`});
+      gameData.stores.forEach(element => {storesHTML += `&nbsp; <a target='_blank' href=http://${element.store.domain}>${element.store.name}</a> &nbsp;`});
 
       const resultsContent = `
         <section class="page-detail">
@@ -26,17 +25,18 @@ const PageDetail = (argument) => {
             <div class="article-img-cover" style="background-image: url('${gameData.background_image}');"></div>
             <div class="article-img-previews"></div>
             <div class="article-svg">${svgLogos}</div>
+            <div id="video"><div><button id="play" onclick="playVideo(${gameData.id})">PLAY |></button></div></div>
           </div>
           <div class="article-detail">
-            <h1 class="title">${gameData.name}</h1>
-            <p class="release-date">Release date : <span id="releaseDate">${gameData.released}</span></p>
-            <p class="description">${gameData.description_raw}</p>
-            <p class="developers">Developed by : &nbsp;  <span id="dev">${developersHTML}</span></p>
-            <p class="detail-rating">note : &nbsp; ${gameData.rating} / ${gameData.rating_top} &nbsp; ( ${gameData.ratings_count} votes )</p>
-            <p class="website">website : <a href="${gameData.website}" target="_blank">${gameData.name}</a></p>
-            <p class="tags"> ${tagsHTML} </p>
-            <div class="article-platforms-genres">${platformsHTML} &nbsp; - &nbsp; ${genresHTML}</div>
-
+            <div class="title">${gameData.name}</div>
+            <div class="article-genres"> <div><u>Genres</u> :</div> <div class="genre-bottom">${genresHTML}</div></div>
+            <div class="release-date"><u>Release date</u> : &nbsp; <span id="releaseDate">${gameData.released}</span></div>
+            <div class="description">${gameData.description_raw}</div>
+            <div class="developers"><u>Developed by</u> : &nbsp;  <span id="dev">${developersHTML}</span></div>
+            <div class="detail-rating"><u>Note</u> : &nbsp; ${gameData.rating} / ${gameData.rating_top} &nbsp; ( ${gameData.ratings_count} votes )</div>
+            <div class="tags"> ${tagsHTML} </div>
+            <div class="stores"><u>Stores</u> : ${storesHTML}</div>
+            <div class="website"><u>Game Website</u> : &nbsp;<a href="${gameData.website}" target="_blank">${gameData.name}</a></div>
           </div>
         </section>`;
 
@@ -59,19 +59,6 @@ const PageDetail = (argument) => {
             resultsScreenshots.innerHTML = screenshotsHTML;
           });
 
-          // Fetch platforms
-          // fetch(`https://api.rawg.io/api/games/${response.id}/game-series?key=${API_KEY}`)
-          // .then((response) => response.json())
-          // .then((response) => {
-          //   console.log(response);
-            // for(let i=0; i<4; i++){
-            //   platformsHTML += `<div class="platform">${response.results[i].name}</div>`;
-            // }
-            // const resultsScreenshots = document.querySelector('.article-platforms');
-            // resultsScreenshots.innerHTML = platformsHTML;
-          // });
-
-
           displayGame(response);
         });
     };
@@ -90,5 +77,6 @@ const PageDetail = (argument) => {
 
   render();
 };
+
 
 export default PageDetail;

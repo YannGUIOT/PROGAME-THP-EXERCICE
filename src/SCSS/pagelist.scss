@@ -1,0 +1,221 @@
+/***********************  PAGE LIST  ***********************/
+
+.page-list {
+  margin-top: -5em;
+}
+
+/******  ARTICLES  ******/
+
+.articles {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row ;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  color: #818180;
+}
+
+/**************  CARDGAME  **************/
+
+.cardGame {
+  display: flex;
+  flex-direction: column;
+  height: 25em;
+  width: 45em;
+  border: 1px solid black;
+  border-radius: 1em;
+  background-size: 100% 100%;
+  box-shadow: 2px 2px 2px #818180;
+}
+
+/******  BANNER  ******/
+
+.banner {
+  background-color: rgba(0, 0, 0, 0.7); 
+  position: absolute; 
+  width: 45em; 
+  height: 3.4em; 
+  border-radius: 1em 1em 0em 0em;
+  text-align: center;
+}
+
+.name {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgb(253, 2, 2);
+  color: white;
+  text-align: center; 
+  position: relative;
+  top: 5%; 
+}
+
+/******  RESOURCES  ******/
+
+.resources {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/***  PLATFORMS  ***/
+
+.platforms {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.4em;
+  height: max-content;
+  max-height: 19.6em;
+  width: 6em;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: rgb(0, 0, 0, 0.7);
+  border-radius: 0 1em 1em 0;
+}
+
+/***  RATINGS  ***/
+
+.note {
+  font-size: 4em;
+  font-weight: bolder;
+  color: rgb(255, 255, 0);
+  text-shadow: 0px 0px 6px rgb(0, 0, 0);
+}
+
+.counts {
+  margin-top: -1em;
+  font-size: 3em;
+  font-weight: bolder;
+  color: rgb(250, 193, 6);
+  text-shadow: 0px 0px 6px rgb(0, 0, 0);
+}
+
+/***  GENRES  ***/
+
+.genres {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.4em;
+  height: 19.4em;
+  justify-content: flex-start;
+  gap: 0.5em;
+  align-items: flex-end;
+}
+
+.genre {
+  color: rgb(6, 71, 250);
+  font-weight: bold;
+  width: max-content;
+  border: 3px solid rgba(245, 245, 245, 0);
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 0.8em;
+  box-shadow: 2px 2px 6px rgb(26, 25, 25);
+}
+
+.genre-list {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  width: max-content;
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-color: rgb(0, 0, 0, 0.7);
+  border-radius: 0.8em 0 0 0.8em;
+}
+
+/***  DATEBANNER  ***/
+
+.dateBanner {
+  margin-top: 23em;
+  background-color: rgba(0, 0, 0, 0.85); 
+  position: absolute; 
+  width: 45em; 
+  height: 2em;
+  border-radius: 0em 0em 1em 1em;
+  text-align: center;
+  visibility: hidden;
+}
+
+.date {
+  color: rgb(235, 230, 225);
+  font-size: x-large;
+  text-shadow: 1px 1px 2px rgb(5, 0, 0);
+  text-align: center;
+  position: relative; 
+  top: 5%; 
+}
+
+
+
+
+
+.logo-platform-pageList{
+  transform: scale(2);
+  color : white;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+
+
+
+.ratings {
+  margin-top: 5em;
+  text-align: center;
+  visibility: hidden;
+}
+
+
+.cardGame:hover .dateBanner {
+  visibility: visible;
+}
+
+.cardGame:hover .ratings {
+  visibility: visible;
+}
+
+.cardGame:hover .genre-list, .cardGame:hover .platforms {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.moreInfo {
+  color: greenyellow;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: rgb(173, 15, 15);
+  font-size: 5vw;
+  font-weight: bold;
+  margin-top: -0.8em;
+}
+
+form svg {
+  margin-left: 8px;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+form svg:hover{
+  transform: scale(1.2);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#pageContent {
+  display: flex;
+  justify-content: center;
+}
